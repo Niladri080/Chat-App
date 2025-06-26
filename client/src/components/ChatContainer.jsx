@@ -5,7 +5,7 @@ import { ChatContext } from "../../context/ChatContext";
 import { AuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 
-const ChatContainer = () => {
+const ChatContainer = ({setshowProfile}) => {
   const {
     messages,
     selectedUser,
@@ -67,7 +67,7 @@ const ChatContainer = () => {
   return (
     <div className="h-full overflow-y-auto relative backdrop-blur-lg">
       {/* Header */}
-      <div className="flex items-center gap-3 py-3 mx-4 border-b border-stone-500">
+      <div className="flex items-center gap-3 py-3 mx-4 border-b border-stone-500 cursor-pointer" onClick={()=>setshowProfile(true)}>
         <img
           src={selectedUser?.profilePic || assets.avatar_icon}
           alt="User"

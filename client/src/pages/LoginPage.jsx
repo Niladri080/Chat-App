@@ -47,10 +47,6 @@ const LoginPage = () => {
       <button className='py-3 bg-gradient-to-r from-purple-400 to-violet-600 text-white rounded-md cursor-pointer'>
         {currState==="Sign up" ?  "Create Account" : "Login Now"}
       </button>
-      <div className='flex items-center gap-2 text-sm text-gray-500'>
-        <input type="checkbox" />
-        <p>Agree to the terms of use & privacy policy</p>
-      </div>
       <div className='flex flex-col gap-2'>
         {currState==="Sign up"? (
           <p className='text-sm text-gray-600'>Alreay have an account?<span onClick={()=>{setcurrState("Login"); setisDataSubmitted(false)}} className='font-medium text-violet-500 cursor-pointer'>Login here</span></p>
