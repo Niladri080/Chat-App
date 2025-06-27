@@ -47,7 +47,7 @@ io.on("connection", (socket) => {
 });
 
 // Middleware
-app.use(express.json({ limit: "4mb" }));
+app.use(express.json({ limit: "10mb" }));
 app.use(cors());
 
 // Routes

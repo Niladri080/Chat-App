@@ -1,17 +1,18 @@
-import React, { useContext, useState } from 'react';
-import Sidebar from '../components/Sidebar';
-import ChatContainer from '../components/ChatContainer';
-import RightSidebar from '../components/RightSidebar';
-import { ChatContext } from '../../context/ChatContext';
+import React, { useContext, useState } from "react";
+import Sidebar from "../components/Sidebar";
+import ChatContainer from "../components/ChatContainer";
+import RightSidebar from "../components/RightSidebar";
+import { ChatContext } from "../../context/ChatContext";
 
 const HomePage = () => {
   const { selectedUser } = useContext(ChatContext);
   const [showProfile, setshowProfile] = useState(false);
 
   const getGridCols = () => {
-    if (!selectedUser) return 'md:grid-cols-2';
-    if (showProfile) return 'md:grid-cols-[1fr_1.5fr_1fr] xl:grid-cols-[1fr_2fr_1fr]';
-    return 'md:grid-cols-[1fr_2fr]';
+    if (!selectedUser) return "md:grid-cols-2";
+    if (showProfile)
+      return "md:grid-cols-[1fr_1.5fr_1fr] xl:grid-cols-[1fr_2fr_1fr]";
+    return "md:grid-cols-[1fr_2fr]";
   };
 
   return (
@@ -25,7 +26,6 @@ const HomePage = () => {
          md:grid ${getGridCols()} 
          flex flex-col`}
       >
-        
         {/* Mobile Layout */}
         <div className="flex flex-col md:hidden h-full">
           {!selectedUser && (
@@ -53,7 +53,6 @@ const HomePage = () => {
           <ChatContainer setshowProfile={setshowProfile} />
           {showProfile && <RightSidebar setshowProfile={setshowProfile} />}
         </div>
-       
       </div>
     </div>
   );
