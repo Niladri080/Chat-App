@@ -9,7 +9,9 @@ export const getUsersForSidebar = async (req, res) => {
     const userId = req.user._id;
 
     // Get all users except the logged-in one
-    const filteredUsers = await User.find({ _id: { $ne: userId } }).select("-password");
+    const filteredUsers = await User.find({ _id: { $ne: userId } }).select(
+      "-password"
+    );
 
     // Count unseen messages from each user
     const unseenMessages = {};

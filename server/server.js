@@ -27,13 +27,21 @@ io.on("connection", (socket) => {
   }
 
   console.log("User connected:", userId);
-  userSocketMap[userId] = socket.id;
+  if (!userSocketMap[userId]) {
+    userSocketMap[userId] = new Set();
+  }
+  userSocketMap[userId].add(socket.id);
 
   io.emit("getOnlineUsers", Object.keys(userSocketMap));
 
   socket.on("disconnect", () => {
     console.log("User disconnected:", userId);
-    delete userSocketMap[userId];
+    if (userSocketMap[userId]) {
+      userSocketMap[userId].delete(socket.id);
+      if (userSocketMap[userId].size === 0) {
+        delete userSocketMap[userId];
+      }
+    }
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
   });
 });
