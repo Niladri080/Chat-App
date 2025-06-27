@@ -28,7 +28,7 @@ const Sidebar = ({ setshowProfile }) => {
 
   useEffect(() => {
     getUsers();
-  }, [onlineUsers]);
+  }, []);
 
   return (
     <div
